@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 8303
+
+
+zuul:
+  #prefix: /api
+  routes:
+    families-service:
+      path: /servicioB/**
+      url: http://localhost:8080
+    school-service:
+      path: /servicioA/**
+      url: http://localhost:8081
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8302/eureka/
+  instance:
+    hostname: localhost
